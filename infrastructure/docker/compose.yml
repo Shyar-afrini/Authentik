@@ -1,0 +1,24 @@
+# Auth server on its own:  docker compose -f infrastructure/docker/compose.yml up --build
+# First run (or after upgrading):  docker compose -f infrastructure/docker/compose.yml run --rm auth node dist/database/migrate.js
+services:
+  auth:
+    build:
+      context: ../..
+      dockerfile: infrastructure/docker/server.Dockerfile
+      secrets: [npmrc]
+    restart: unless-stopped
+    ports:
+      - "3005:3005"
+    environment:
+      DATABASE_URL: ${AUTH_DATABASE_URL:?set AUTH_DATABASE_URL}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET (32+ chars)}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:?public URL of this server}
+      AUTH_TRUSTED_ORIGINS: ${AUTH_TRUSTED_ORIGINS:-}
+      AUTH_TRUSTED_PROXIES: ${AUTH_TRUSTED_PROXIES:-}
+      AUTH_METRICS_TOKEN: ${AUTH_METRICS_TOKEN:-}
+      AUTH_DB_TIMEZONE: ${AUTH_DB_TIMEZONE:-UTC}
+    stop_grace_period: 15s
+
+secrets:
+  npmrc:
+    file: ${NPMRC_FILE:-~/.npmrc}

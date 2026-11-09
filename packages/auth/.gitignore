@@ -1,0 +1,14 @@
+node_modules
+dist
+.turbo
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Accidental tsc emit beside sources (must live in dist/)
+src/**/*.js
+src/**/*.d.ts
+src/**/*.d.ts.map
+src/**/*.js.map

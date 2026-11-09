@@ -1,0 +1,123 @@
+{
+  "name": "@authentik/auth",
+  "version": "1.0.0",
+  "description": "Authentik client library: session client, Nest guard, CASL abilities and offline token verification for apps that use the Authentik server",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "nest": [
+        "./dist/cjs/nest/index.d.ts"
+      ],
+      "client": [
+        "./dist/client.d.ts"
+      ],
+      "session": [
+        "./dist/session.d.ts"
+      ],
+      "permissions": [
+        "./dist/permissions/index.d.ts"
+      ],
+      "verify": [
+        "./dist/verify.d.ts"
+      ],
+      "next": [
+        "./dist/next.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./session": {
+      "types": "./dist/session.d.ts",
+      "default": "./dist/session.js"
+    },
+    "./nest": {
+      "types": "./dist/cjs/nest/index.d.ts",
+      "require": "./dist/cjs/nest/index.js",
+      "default": "./dist/cjs/nest/index.js"
+    },
+    "./permissions": {
+      "types": "./dist/permissions/index.d.ts",
+      "default": "./dist/permissions/index.js"
+    },
+    "./verify": {
+      "types": "./dist/verify.d.ts",
+      "default": "./dist/verify.js"
+    },
+    "./next": {
+      "types": "./dist/next.d.ts",
+      "default": "./dist/next.js"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.kakontechnology.com/",
+    "access": "public"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc -p tsconfig.cjs.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'})+'\\n')\"",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@casl/ability": "^6.7.3",
+    "better-auth": "^1.7.18",
+    "jose": "^6.2.12"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "next": ">=15",
+    "react": "^19.0.0",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    },
+    "@nestjs/core": {
+      "optional": true
+    },
+    "reflect-metadata": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    },
+    "next": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@nestjs/common": "11.2.5",
+    "@nestjs/core": "11.2.5",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.1",
+    "@types/react": "^19.2.18",
+    "dotenv": "^17.4.2",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typescript": "7.0.2",
+    "vitest": "^3.2.4"
+  },
+  "files": [
+    "dist",
+    "PERMISSIONS.md",
+    "README.md"
+  ]
+}

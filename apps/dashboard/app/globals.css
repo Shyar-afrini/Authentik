@@ -1,0 +1,12 @@
+/* Hel UI brings Tailwind itself (@import "tailwindcss"), its tokens and fonts. */
+@import "@hel/ui/styles.css";
+@import "@hel/ui/fonts.css";
+
+/* Tailwind v4 defaults bare `border` to currentColor; keep the Hel hairline instead. */
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-line-base-default);
+  }
+}

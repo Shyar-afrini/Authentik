@@ -1,0 +1,41 @@
+{
+  "name": "@authentik/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Authentik: standalone multi-tenant identity server (NestJS + Better Auth) with its own Postgres database",
+  "type": "module",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "dev": "tsc -p tsconfig.build.json --watch --preserveWatchOutput & node --watch --watch-preserve-output dist/main.js",
+    "start": "node dist/main.js",
+    "migrate": "node dist/database/migrate.js",
+    "seed": "node dist/database/seed.js",
+    "db:generate": "drizzle-kit generate",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@better-auth/expo": "^1.7.18",
+    "@better-auth/drizzle-adapter": "^1.7.18",
+    "@better-auth/oauth-provider": "^1.7.18",
+    "@nestjs/common": "11.2.5",
+    "@nestjs/core": "11.2.5",
+    "@nestjs/platform-express": "11.2.5",
+    "@authentik/auth": "workspace:*",
+    "better-auth": "^1.7.18",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "helmet": "^8.3.0",
+    "ioredis": "^5.10.1",
+    "postgres": "^3.4.9",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.5.1",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "7.0.2",
+    "vitest": "^3.2.4"
+  }
+}

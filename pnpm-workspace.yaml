@@ -1,0 +1,22 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  "@parcel/watcher": false
+  "@scarf/scarf": true
+  "@swc/core": false
+  esbuild: false
+  sharp: true
+minimumReleaseAgeExclude:
+  - '@hel/ui@0.0.3 || 1.0.0'
+  - '@hel/blocks@1.0.0'
+  - '@hel/forms@1.0.0'
+  - '@hel/i18n@1.0.0'
+  - '@hel/table@1.0.1'
+overrides:
+  "@nestjs/common": "11.2.5"
+  "@nestjs/core": "11.2.5"
+  "@nestjs/platform-express": "11.2.5"
+nodeLinker: hoisted
+shamefullyHoist: true
+strictPeerDependencies: false

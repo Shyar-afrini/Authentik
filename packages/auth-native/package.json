@@ -1,0 +1,31 @@
+{
+  "name": "@authentik/auth-native",
+  "version": "0.1.0",
+  "description": "React Native (Expo) client for the Authentik server: Better Auth with secure token storage",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" }
+  },
+  "publishConfig": { "registry": "https://npm.kakontechnology.com/", "access": "public" },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@better-auth/expo": "^1.7.18",
+    "better-auth": "^1.7.18"
+  },
+  "peerDependencies": {
+    "expo-constants": "*",
+    "expo-linking": "*",
+    "expo-secure-store": "*",
+    "expo-web-browser": "*",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
+  }
+}
